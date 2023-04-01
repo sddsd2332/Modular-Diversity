@@ -1,50 +1,136 @@
-
-// For those who want the bleeding edge
 buildscript {
     repositories {
-        jcenter()
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url = "https://maven.minecraftforge.net/"
         }
-        maven { url = "https://plugins.gradle.org/m2/" }
+        maven {
+            url = 'https://maven.cleanroommc.com/'
+        }
+        maven {
+            url = 'https://repo.spongepowered.org/maven/'
+        }
+        maven {
+            url = 'https://repo1.maven.org/maven2/'
+        }
+        //国内镜像
+        maven {
+            url = 'http://lss233.littleservice.cn/repositories/minecraft'
+        }
+        maven {
+            url ='https://crystal.app.lss233.com/repositories/minecraft/'
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath 'com.wynprice.cursemaven:CurseMaven:1.2.3'
     }
 }
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
+}
+
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'com.wynprice.cursemaven'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 version = "1.10"
-group= "modulardiversity" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "modulardiversity" 
 archivesBaseName = "Modular Diversity"
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = targetCompatibility = '1.8'
+
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
 
 minecraft {
-    version = "1.12.2-14.23.5.2781"
-    runDir = "run"
-    mappings = "snapshot_20171125"
+    version = '1.12.2-14.23.5.2847'
+    runDir = 'run'
+    mappings = 'stable_39'
     useDepAts = true
 }
 
+runClient {
+    args '--username', 'sddsd2332'
+    jvmArgs '-Xms4G', '-Xmx8G'
+}
+
 repositories {
-    maven { url "http://dvs1.progwml6.com/files/maven" }
-	maven { url "http://www.ryanliptak.com/maven/" }
-    maven { url "http://maven.blamejared.com" }
-    maven { url "https://modmaven.k-4u.nl" }
-    maven { url "https://maven.hellfiredev.net"}
+    maven {
+        url 'https://maven.blamejared.com/'
+    }
+    maven {
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    maven {
+        url 'https://maven.hellfiredev.net/'
+    }
+    maven {
+        url 'https://cfa2.cursemaven.com'
+    }
+    maven {
+        url = 'https://maven.minecraftforge.net'
+    }
+    maven {
+        url = 'https://maven.cleanroommc.com/'
+    }
+    maven { // TOP
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
+    maven {
+        url = 'https://repo1.maven.org/maven2/'
+    }
+    //国内镜像
+    maven{
+        url = 'http://lss233.littleservice.cn/repositories/minecraft'
+    }
+    maven{
+        url ='https://crystal.app.lss233.com/repositories/minecraft/'
+    }
+    maven {
+        url = 'https://repo.spongepowered.org/maven/'
+    }
+    maven {
+        url = 'https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all/'
+    }
+    maven {
+        url 'https://dvs1.progwml6.com/files/maven/'
+    }
+    maven {
+        name = "CurseForge"
+        url = 'https://www.cursemaven.com/'
+    }
+    maven {
+        url "http://maven.tterrag.com/"
+    }
 }
 
 dependencies {
-    deobfCompile curse.resolveUrl("https://www.curseforge.com/minecraft/mc-mods/mysticalmechanics/files/2869691")
-	deobfCompile "mezz.jei:jei_1.12.2:4.14.4.267"
-    deobfCompile "vazkii.botania:Botania:r1.10-355.4" //should this be deobfProvided?
-    deobfCompile "me.desht.pneumaticcraft:pneumaticcraft-repressurized:1.12.2-0.9.1-317"
-    deobfCompile "hellfirepvp.modularmachinery:modularmachinery:1.12.2-1.11.0-v50"
+
+    compileOnly 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+'
+    compileOnly 'curse.maven:zenutil-401178:4394263'
+    deobfCompile 'curse.maven:mysticalmechanics-300742:3006392'
+	deobfCompile 'curse.maven:HadEnoughItems-557549:4451828'
+    deobfCompile 'curse.maven:botania-225643:3330934'
+    deobfCompile 'curse.maven:pneumaticcraft-repressurized-281849:2978408'
+    deobfCompile 'curse.maven:modularmachinery-community-edition-817377:4468802'
+    deobfCompile 'curse.maven:thaumcraft-223628:2629023'
+    deobfCompile 'curse.maven:bwm-suite-246760:3289033'
+    deobfCompile 'curse.maven:buildcraft-61811:3204475'
+    //deobfCompile 'curse.maven:embers-rekindled-300777:3695248'
+    deobfCompile 'curse.maven:immersive-petroleum-268250:3382321'
+    deobfCompile 'curse.maven:mekanism-unofficial-edition-v10-edition-840735:4464199'
+    deobfCompile 'curse.maven:prodigy-tech-297414:2769520'
+    compileOnly files("libs/EmbersRekindled-1.19.jar")
+    compileOnly files("libs/buildcraft-all-7.99.24.8.jar")
+
+    runtime 'curse.maven:baubles-227083:2518667'
+    runtime 'curse.maven:bwm-core-294335:2624990'
+    runtime 'curse.maven:immersive-engineering-231951:2974106'
+    runtime 'curse.maven:patchouli-306770:3162874'
+	runtime 'curse.maven:thaumic_jei-285492:2705304'
+
 }
 
 task deobfJar(type: Jar) {
@@ -74,6 +160,10 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+tasks.withType(JavaCompile) {
+options.encoding = "UTF-8"
 }
 
 idea { module { inheritOutputDirs = true } }
