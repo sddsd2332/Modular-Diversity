@@ -117,17 +117,18 @@ dependencies {
     deobfCompile 'curse.maven:modularmachinery-community-edition-817377:4468802'
     deobfCompile 'curse.maven:thaumcraft-223628:2629023'
     deobfCompile 'curse.maven:bwm-suite-246760:3289033'
-    deobfCompile 'curse.maven:buildcraft-61811:3204475'
     //deobfCompile 'curse.maven:embers-rekindled-300777:3695248'
     deobfCompile 'curse.maven:immersive-petroleum-268250:3382321'
     deobfCompile 'curse.maven:mekanism-unofficial-edition-v10-edition-840735:4464199'
     deobfCompile 'curse.maven:prodigy-tech-297414:2769520'
+    deobfCompile 'curse.maven:guide-api-228832:2645992'
+    deobfCompile 'curse.maven:immersive-engineering-231951:2974106'
+
     compileOnly files("libs/EmbersRekindled-1.19.jar")
     compileOnly files("libs/buildcraft-all-7.99.24.8.jar")
 
     runtime 'curse.maven:baubles-227083:2518667'
     runtime 'curse.maven:bwm-core-294335:2624990'
-    runtime 'curse.maven:immersive-engineering-231951:2974106'
     runtime 'curse.maven:patchouli-306770:3162874'
 	runtime 'curse.maven:thaumic_jei-285492:2705304'
 
