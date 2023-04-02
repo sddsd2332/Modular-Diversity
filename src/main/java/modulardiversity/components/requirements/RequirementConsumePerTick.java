@@ -5,19 +5,20 @@ import hellfirepvp.modularmachinery.common.crafting.helper.ComponentOutputRestri
 import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement;
 import hellfirepvp.modularmachinery.common.crafting.helper.CraftCheck;
 import hellfirepvp.modularmachinery.common.crafting.helper.RecipeCraftingContext;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.util.ResultChance;
-import modulardiversity.util.IResourceToken;
 import modulardiversity.util.ICraftingResourceHolder;
+import modulardiversity.util.IResourceToken;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public abstract class RequirementConsumePerTick<T, V extends IResourceToken> extends ComponentRequirement.PerTick<T> {
+public abstract class RequirementConsumePerTick<T, V extends IResourceToken> extends ComponentRequirement.PerTick<T,T> {
     V checkToken;
     V perTickToken;
 
-    public RequirementConsumePerTick(ComponentType componentType, MachineComponent.IOType actionType) {
+    public RequirementConsumePerTick(ComponentType componentType, IOType actionType) {
         super(componentType, actionType);
     }
 
@@ -87,7 +88,7 @@ public abstract class RequirementConsumePerTick<T, V extends IResourceToken> ext
         this.perTickToken = emitConsumptionToken(context);
         if(enough)
             return CraftCheck.success();
-        else if(getActionType() == MachineComponent.IOType.INPUT)
+        else if(getActionType() == IOType.INPUT)
             return CraftCheck.failure(getMissingInput());
         else
             return CraftCheck.failure(getMissingOutput());

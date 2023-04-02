@@ -2,9 +2,7 @@ package modulardiversity.block;
 
 import hellfirepvp.modularmachinery.common.CommonProxy;
 import hellfirepvp.modularmachinery.common.block.BlockMachineComponent;
-import modulardiversity.tile.TileMysticalMechanicsInput;
 import modulardiversity.tile.TileMysticalMechanicsOutput;
-import mysticalmechanics.tileentity.TileEntityCreativeMechSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,7 +13,10 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class BlockMysticalMechanicsOutput extends BlockMachineComponent {
@@ -61,8 +62,10 @@ public class BlockMysticalMechanicsOutput extends BlockMachineComponent {
         return EnumBlockRenderType.MODEL;
     }
 
+    @Nonnull
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
     }
 }

@@ -5,6 +5,7 @@ import blusunrize.immersiveengineering.common.IESaveData;
 import hellfirepvp.modularmachinery.common.crafting.ComponentType;
 import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement;
 import hellfirepvp.modularmachinery.common.crafting.helper.RecipeCraftingContext;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.modifier.RecipeModifier;
 import modulardiversity.jei.JEIComponentMineral;
@@ -23,7 +24,7 @@ public class RequirementMineral extends RequirementEnvironmental<Mineral, Requir
     public int oreMin, oreMax;
     public int amount;
 
-    public RequirementMineral(MachineComponent.IOType actionType, String name, int oreMin, int oreMax, int amount) {
+    public RequirementMineral(IOType actionType, String name, int oreMin, int oreMax, int amount) {
         super(ComponentType.Registry.getComponent("mineral"), actionType);
         this.name = name;
         this.oreMin = oreMin;
@@ -146,7 +147,7 @@ public class RequirementMineral extends RequirementEnvironmental<Mineral, Requir
         }
 
         @Override
-        public void applyModifiers(RecipeCraftingContext modifiers, MachineComponent.IOType ioType, float durationMultiplier) {
+        public void applyModifiers(RecipeCraftingContext modifiers, IOType ioType, float durationMultiplier) {
             oreMin = Misc.applyModifiers(modifiers,"mineral_min",ioType, oreMin,false);
             oreMax = Misc.applyModifiers(modifiers,"mineral_max",ioType, oreMax,false);
             amount = Misc.applyModifiers(modifiers,"mineral",ioType, amount,false);

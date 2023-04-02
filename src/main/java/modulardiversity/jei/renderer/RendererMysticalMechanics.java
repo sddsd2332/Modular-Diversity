@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.ingredients.IIngredientRenderer;
 import modulardiversity.jei.JEIHelpers;
-import modulardiversity.jei.ingredients.Mechanical;
 import modulardiversity.jei.ingredients.MysticalMechanics;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

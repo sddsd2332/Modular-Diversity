@@ -5,11 +5,8 @@ import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement.
 import hellfirepvp.modularmachinery.common.integration.recipe.RecipeLayoutPart;
 import mezz.jei.api.ingredients.IIngredientRenderer;
 import modulardiversity.components.requirements.RequirementReservoir;
-import modulardiversity.components.requirements.RequirementWeather;
 import modulardiversity.jei.ingredients.Reservoir;
-import modulardiversity.jei.ingredients.Weather;
 import modulardiversity.jei.renderer.RendererReservoir;
-import modulardiversity.jei.renderer.RendererWeather;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

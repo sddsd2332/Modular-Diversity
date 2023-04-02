@@ -3,20 +3,17 @@ package modulardiversity.block;
 import hellfirepvp.modularmachinery.common.CommonProxy;
 import hellfirepvp.modularmachinery.common.block.BlockMachineComponent;
 import modulardiversity.tile.TileEntityMekHeatInput;
-import modulardiversity.tile.TileEntityMekLaserAcceptor;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class BlockMekHeatInput extends BlockMachineComponent {
@@ -51,8 +48,10 @@ public class BlockMekHeatInput extends BlockMachineComponent {
         return EnumBlockRenderType.MODEL;
     }
 
+    @Nonnull
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
     }
 }

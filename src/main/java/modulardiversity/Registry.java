@@ -1,15 +1,9 @@
 package modulardiversity;
 
 import hellfirepvp.modularmachinery.common.crafting.ComponentType;
-import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement;
-import hellfirepvp.modularmachinery.common.crafting.requirement.type.RequirementType;
 import hellfirepvp.modularmachinery.common.item.ItemBlockMachineComponent;
-import hellfirepvp.modularmachinery.common.item.ItemBlockMachineComponentCustomName;
-import hellfirepvp.modularmachinery.common.lib.RegistriesMM;
 import modulardiversity.block.*;
-import modulardiversity.components.*;
-import modulardiversity.components.ComponentLaser;
-import modulardiversity.components.requirements.RequirementEmber;
+import modulardiversity.components.component.*;
 import modulardiversity.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -37,21 +31,6 @@ public class Registry {
 
     public static void registerBlocks()
     {
-        if(ModularDiversity.EmbersLoaded) {
-            BlockEmberInputHatch emberInputHatch = new BlockEmberInputHatch();
-            BlockEmberOutputHatch emberOutputHatch = new BlockEmberOutputHatch();
-
-            registerBlock("blockemberinputhatch",emberInputHatch, new ItemBlockMachineComponentCustomName(emberInputHatch));
-            registerBlock("blockemberoutputhatch",emberOutputHatch, new ItemBlockMachineComponentCustomName(emberOutputHatch));
-        }
-
-        if(ModularDiversity.BotaniaLoaded) {
-            BlockManaInputHatch manaInputHatch = new BlockManaInputHatch();
-            BlockManaOutputHatch manaOutputHatch = new BlockManaOutputHatch();
-
-            registerBlock("blockmanainputhatch",manaInputHatch, new ItemBlockMachineComponent(manaInputHatch));
-            registerBlock("blockmanaoutputhatch",manaOutputHatch, new ItemBlockMachineComponent(manaOutputHatch));
-        }
 
         if(ModularDiversity.ImmersivePetroleumLoaded) {
             BlockJackHatch jackHatch = new BlockJackHatch();
@@ -65,15 +44,6 @@ public class Registry {
             registerBlock("blocklaserhatch",laserHatch, new ItemBlockMachineComponent(laserHatch));
         }
 
-        /*if(ModularDiversity.PneumaticCraftLoaded) {
-            BlockPneumaticInput pneumaticInputHatch = new BlockPneumaticInput();
-            BlockPneumaticConsumer pneumaticConsumerHatch = new BlockPneumaticConsumer();
-            BlockPneumaticOutput pneumaticOutput = new BlockPneumaticOutput();
-
-            registerBlock("blockpneumaticinputhatch",pneumaticInputHatch, new ItemBlockMachineComponent(pneumaticInputHatch));
-            registerBlock("blockpneumaticconsumerhatch",pneumaticConsumerHatch, new ItemBlockMachineComponent(pneumaticConsumerHatch));
-            registerBlock("blockpneumaticoutputhatch",pneumaticOutput, new ItemBlockMachineComponent(pneumaticOutput));
-        }*/
 
         if(ModularDiversity.BetterWithModsLoaded) {
             BlockMechInputHatch mechInputHatch = new BlockMechInputHatch();
@@ -86,14 +56,7 @@ public class Registry {
             registerBlock("blockmechoutputhatch",mechOutputHatch, new ItemBlockMachineComponent(mechOutputHatch));
             registerBlock("blockmechsteeloutputhatch",mechSteelOutputHatch, new ItemBlockMachineComponent(mechSteelOutputHatch));
         }
-        
-        if(ModularDiversity.ProdigyTechLoaded) {
-        	BlockHotAirInputHatch hotAirInputHatch = new BlockHotAirInputHatch();
-        	BlockHotAirOutputHatch hotAirOuputHatch = new BlockHotAirOutputHatch();
 
-            registerBlock("blockhotairinputhatch", hotAirInputHatch, new ItemBlockMachineComponent(hotAirInputHatch));
-            registerBlock("blockhotairoutputhatch",hotAirOuputHatch, new ItemBlockMachineComponent(hotAirOuputHatch));
-        }
 
         if (ModularDiversity.MekanismLoaded) {
             BlockMekLaserAcceptor mekLaserAcceptor = new BlockMekLaserAcceptor();
@@ -113,13 +76,6 @@ public class Registry {
             registerBlock("blockmystmechoutput",mysticalMechanicsOutput, new ItemBlockMachineComponent(mysticalMechanicsOutput));
         }
 
-        BlockBiomeDetector blockBiomeDetector = new BlockBiomeDetector();
-        BlockDaylightDetector blockDaylightDetector = new BlockDaylightDetector();
-        BlockWeatherDetector blockWeatherDetector = new BlockWeatherDetector();
-
-        registerBlock("blockbiomedetector",blockBiomeDetector, new ItemBlockMachineComponent(blockBiomeDetector));
-        registerBlock("blockdaylightdetector", blockDaylightDetector, new ItemBlockMachineComponent(blockDaylightDetector));
-        registerBlock("blockweatherdetector", blockWeatherDetector, new ItemBlockMachineComponent(blockWeatherDetector));
     }
 
     public static void registerBlockModels()
@@ -139,7 +95,7 @@ public class Registry {
     public static void registerBlock(String id,Block block, ItemBlock itemBlock)
     {
         block.setRegistryName(ModularDiversity.MODID,id);
-        block.setUnlocalizedName(id);
+        block.setTranslationKey(id);
         BLOCKS.add(block);
         registerItem(id,itemBlock);
     }
@@ -147,20 +103,12 @@ public class Registry {
     public static void registerItem(String id,Item item)
     {
         item.setRegistryName(ModularDiversity.MODID,id);
-        item.setUnlocalizedName(id);
+        item.setTranslationKey(id);
         ITEMS.add(item);
     }
 
-    public static void registerTileEntities()
-    {
-        if(ModularDiversity.EmbersLoaded) {
-            registerTileEntity(TileEmberInputHatch.class);
-            registerTileEntity(TileEmberOutputHatch.class);
-        }
-        if(ModularDiversity.BotaniaLoaded) {
-            registerTileEntity(TileManaInputHatch.class);
-            registerTileEntity(TileManaOutputHatch.class);
-        }
+    public static void registerTileEntities() {
+
         if(ModularDiversity.ImmersivePetroleumLoaded) {
             registerTileEntity(TileJackHatch.class);
         }
@@ -172,15 +120,7 @@ public class Registry {
         if(ModularDiversity.BuildcraftLoaded) {
             registerTileEntity(TileLaserInput.class);
         }
-        if(ModularDiversity.ProdigyTechLoaded) {
-        	registerTileEntity(TileHotAirInput.class);
-        	registerTileEntity(TileHotAirOutput.class);
-        }
-        /*if(ModularDiversity.PneumaticCraftLoaded) {
-            registerTileEntity(TilePneumaticInput.class);
-            registerTileEntity(TilePneumaticInputConsume.class);
-            registerTileEntity(TilePneumaticOutput.class);
-        }*/
+
         if (ModularDiversity.MekanismLoaded) {
             registerTileEntity(TileEntityMekLaserAcceptor.class);
             registerTileEntity(TileEntityMekHeatInput.class);
@@ -190,39 +130,20 @@ public class Registry {
             registerTileEntity(TileMysticalMechanicsInput.class);
             registerTileEntity(TileMysticalMechanicsOutput.class);
         }
-        registerTileEntity(TileEntityBiomeDetector.class);
-        registerTileEntity(TileEntityDaylightDetector.class);
-        registerTileEntity(TileEntityWeatherDetector.class);
     }
 
     @SubscribeEvent
     public static void registerComponents(RegistryEvent.Register<ComponentType> event) {
-        event.getRegistry().register(new ComponentEmber());
         event.getRegistry().register(new ComponentMechanical());
-        event.getRegistry().register(new ComponentEmber());
-        event.getRegistry().register(new ComponentMana());
         event.getRegistry().register(new ComponentLaser());
-        event.getRegistry().register(new ComponentHotAir());
         event.getRegistry().register(new ComponentMekLaser());
         event.getRegistry().register(new ComponentMekHeat());
         event.getRegistry().register(new ComponentMysticalMechanics());
-        event.getRegistry().register(new ComponentBiome());
-        event.getRegistry().register(new ComponentDimension());
-        event.getRegistry().register(new ComponentDaylight());
-        event.getRegistry().register(new ComponentWeather());
         event.getRegistry().register(new ComponentReservoir());
         event.getRegistry().register(new ComponentMineral());
         event.getRegistry().register(new ComponentModifier());
-        event.getRegistry().register(new ComponentEmberWorld());
-        event.getRegistry().register(new ComponentAura());
-        event.getRegistry().register(new ComponentPosition());
-        event.getRegistry().register(new ComponentAnchor());
     }
 
-    @SubscribeEvent
-    public static void registerRequirements(RegistryEvent.Register<RequirementType<?,?>> event) {
-        event.getRegistry().register(new RequirementEmber.Type());
-    }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {

@@ -12,7 +12,10 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 @Optional.Interface(iface = "buildcraft.api.mj.ILaserTargetBlock",modid = "buildcraftlib")
@@ -31,8 +34,10 @@ public class BlockLaserHatch extends BlockMachineComponent implements ILaserTarg
         return EnumBlockRenderType.MODEL;
     }
 
+    @Nonnull
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
     }
 

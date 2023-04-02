@@ -4,6 +4,7 @@ import hellfirepvp.modularmachinery.common.crafting.ComponentType;
 import hellfirepvp.modularmachinery.common.crafting.MachineRecipe;
 import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement;
 import hellfirepvp.modularmachinery.common.crafting.helper.RecipeCraftingContext;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.modifier.RecipeModifier;
 import hellfirepvp.modularmachinery.common.util.ResultChance;
@@ -21,7 +22,7 @@ public class RequirementLaser extends RequirementConsumePerTick<Laser,Requiremen
 
     public long requiredMicroMJ;
 
-    public RequirementLaser(MachineComponent.IOType actionType, long requiredMicroMJ) {
+    public RequirementLaser(IOType actionType, long requiredMicroMJ) {
         super(ComponentType.Registry.getComponent("laser"), actionType);
         this.requiredMicroMJ = requiredMicroMJ;
         if(requiredMicroMJ > highestRequiredMJ)
@@ -86,7 +87,7 @@ public class RequirementLaser extends RequirementConsumePerTick<Laser,Requiremen
         }
 
         @Override
-        public void applyModifiers(RecipeCraftingContext modifiers, MachineComponent.IOType ioType, float durationMultiplier) {
+        public void applyModifiers(RecipeCraftingContext modifiers, IOType ioType, float durationMultiplier) {
             requiredMicroMJ = Misc.applyModifiers(modifiers,"laser",ioType,requiredMicroMJ,false);
         }
 

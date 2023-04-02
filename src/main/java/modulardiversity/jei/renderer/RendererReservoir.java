@@ -1,17 +1,11 @@
 package modulardiversity.jei.renderer;
 
-import com.google.common.collect.Lists;
-import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.ingredients.IIngredientRenderer;
-import modulardiversity.ModularDiversity;
-import modulardiversity.jei.JEIHelpers;
 import modulardiversity.jei.ingredients.Reservoir;
-import modulardiversity.jei.ingredients.Weather;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;

@@ -5,6 +5,8 @@ import hellfirepvp.modularmachinery.common.crafting.requirement.type.Requirement
 import hellfirepvp.modularmachinery.common.machine.IOType;
 
 public interface IResourceToken {
+    void applyModifiers(RecipeCraftingContext modifiers, IOType ioType, float durationMultiplier);
+
     void applyModifiers(RecipeCraftingContext modifiers, RequirementType target, IOType ioType, float durationMultiplier);
 
     default void applyModifiers(RecipeCraftingContext modifiers, RequirementType target, IOType ioType) {

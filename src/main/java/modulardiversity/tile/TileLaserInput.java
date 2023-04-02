@@ -2,13 +2,10 @@ package modulardiversity.tile;
 
 import buildcraft.api.mj.ILaserTarget;
 import buildcraft.api.mj.MjAPI;
-import buildcraft.lib.misc.data.AverageLong;
-import hellfirepvp.modularmachinery.common.crafting.MachineRecipe;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.tiles.base.MachineComponentTile;
 import hellfirepvp.modularmachinery.common.tiles.base.TileColorableMachineComponent;
-import hellfirepvp.modularmachinery.common.util.IEnergyHandler;
-import modulardiversity.ModularDiversity;
 import modulardiversity.components.MachineComponents;
 import modulardiversity.components.requirements.RequirementLaser;
 import modulardiversity.util.ICraftingResourceHolder;
@@ -60,7 +57,7 @@ public class TileLaserInput extends TileColorableMachineComponent implements Mac
     @Nullable
     @Override
     public MachineComponent provideComponent() {
-        return new MachineComponents.LaserHatch(MachineComponent.IOType.INPUT) {
+        return new MachineComponents.LaserHatch(IOType.INPUT) {
             @Override
             public ICraftingResourceHolder<RequirementLaser.ResourceToken> getContainerProvider() {
                 return TileLaserInput.this;

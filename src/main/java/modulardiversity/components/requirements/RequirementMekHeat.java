@@ -3,6 +3,8 @@ package modulardiversity.components.requirements;
 import hellfirepvp.modularmachinery.common.crafting.ComponentType;
 import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement;
 import hellfirepvp.modularmachinery.common.crafting.helper.RecipeCraftingContext;
+import hellfirepvp.modularmachinery.common.crafting.requirement.type.RequirementType;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.modifier.RecipeModifier;
 import modulardiversity.components.MachineComponents;
@@ -18,7 +20,7 @@ public class RequirementMekHeat extends RequirementConsumePerTick<MekHeat, Requi
     double temperatureRequiredMin;
     double temperatureRequiredMax;
 
-    public RequirementMekHeat(MachineComponent.IOType actionType, double temperature, double temperatureRequiredMin, double temperatureRequiredMax) {
+    public RequirementMekHeat(IOType actionType, double temperature, double temperatureRequiredMin, double temperatureRequiredMax) {
         super(ComponentType.Registry.getComponent("mekheat"), actionType);
         this.temperature = temperature;
         this.temperatureRequiredMin = temperatureRequiredMin;
@@ -97,10 +99,15 @@ public class RequirementMekHeat extends RequirementConsumePerTick<MekHeat, Requi
         }
 
         @Override
-        public void applyModifiers(RecipeCraftingContext modifiers, MachineComponent.IOType ioType, float durationMultiplier) {
+        public void applyModifiers(RecipeCraftingContext modifiers, IOType ioType, float durationMultiplier) {
             requiredTemperatureMin = Misc.applyModifiers(modifiers,"mekheat_min",ioType, requiredTemperatureMin,false);
             requiredTemperatureMax = Misc.applyModifiers(modifiers,"mekheat_max",ioType, requiredTemperatureMax,false);
             temperature = Misc.applyModifiers(modifiers,"mekheat",ioType, temperature,false);
+        }
+
+        @Override
+        public void applyModifiers(RecipeCraftingContext modifiers, RequirementType target, IOType ioType, float durationMultiplier) {
+
         }
 
         @Override

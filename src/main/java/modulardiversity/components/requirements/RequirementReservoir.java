@@ -7,6 +7,7 @@ import flaxbeard.immersivepetroleum.common.IPSaveData;
 import hellfirepvp.modularmachinery.common.crafting.ComponentType;
 import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement;
 import hellfirepvp.modularmachinery.common.crafting.helper.RecipeCraftingContext;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.modifier.RecipeModifier;
 import modulardiversity.jei.JEIComponentReservoir;
@@ -26,7 +27,7 @@ public class RequirementReservoir extends RequirementEnvironmental<Reservoir, Re
     public int residualMin, residualMax;
     public int amount;
 
-    public RequirementReservoir(MachineComponent.IOType actionType, String name, int fluidMin, int fluidMax, int residualMin, int residualMax, int amount) {
+    public RequirementReservoir(IOType actionType, String name, int fluidMin, int fluidMax, int residualMin, int residualMax, int amount) {
         super(ComponentType.Registry.getComponent("reservoir"), actionType);
         this.name = name;
         this.fluidMin = fluidMin;
@@ -176,7 +177,7 @@ public class RequirementReservoir extends RequirementEnvironmental<Reservoir, Re
         }
 
         @Override
-        public void applyModifiers(RecipeCraftingContext modifiers, MachineComponent.IOType ioType, float durationMultiplier) {
+        public void applyModifiers(RecipeCraftingContext modifiers, IOType ioType, float durationMultiplier) {
             fluidMin = Misc.applyModifiers(modifiers,"reservoir_min",ioType, fluidMin,false);
             fluidMax = Misc.applyModifiers(modifiers,"reservoir_max",ioType, fluidMax,false);
             residualMin = Misc.applyModifiers(modifiers,"reservoir_residual_min",ioType, fluidMin,false);

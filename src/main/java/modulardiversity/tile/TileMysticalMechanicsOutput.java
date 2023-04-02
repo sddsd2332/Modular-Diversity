@@ -1,5 +1,6 @@
 package modulardiversity.tile;
 
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import modulardiversity.components.MachineComponents;
 import modulardiversity.components.requirements.RequirementMysticalMechanics;
@@ -11,8 +12,6 @@ import mysticalmechanics.api.MysticalMechanicsAPI;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -101,7 +100,7 @@ public class TileMysticalMechanicsOutput extends TileEntityMysticalMechanics imp
     @Nullable
     @Override
     public MachineComponent provideComponent() {
-        return new MachineComponents.MysticalMechanicsHatch(MachineComponent.IOType.OUTPUT) {
+        return new MachineComponents.MysticalMechanicsHatch(IOType.OUTPUT) {
             @Override
             public ICraftingResourceHolder<RequirementMysticalMechanics.ResourceToken> getContainerProvider() {
                 return TileMysticalMechanicsOutput.this;

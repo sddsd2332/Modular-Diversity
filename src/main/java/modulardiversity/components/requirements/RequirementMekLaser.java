@@ -3,6 +3,7 @@ package modulardiversity.components.requirements;
 import hellfirepvp.modularmachinery.common.crafting.ComponentType;
 import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement;
 import hellfirepvp.modularmachinery.common.crafting.helper.RecipeCraftingContext;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.modifier.RecipeModifier;
 import modulardiversity.components.MachineComponents;
@@ -17,7 +18,7 @@ public class RequirementMekLaser extends RequirementConsumeOnce<MekLaser, Requir
 
     public double requiredEnergy;
 
-    public RequirementMekLaser(MachineComponent.IOType actionType, double requiredEnergy) {
+    public RequirementMekLaser(IOType actionType, double requiredEnergy) {
         super(ComponentType.Registry.getComponent("meklaser"), actionType);
         this.requiredEnergy = requiredEnergy;
     }
@@ -65,7 +66,7 @@ public class RequirementMekLaser extends RequirementConsumeOnce<MekLaser, Requir
         }
 
         @Override
-        public void applyModifiers(RecipeCraftingContext modifiers, MachineComponent.IOType ioType, float durationMultiplier) {
+        public void applyModifiers(RecipeCraftingContext modifiers, IOType ioType, float durationMultiplier) {
             energy = Misc.applyModifiers(modifiers,"meklaser",ioType, energy,false);
         }
 

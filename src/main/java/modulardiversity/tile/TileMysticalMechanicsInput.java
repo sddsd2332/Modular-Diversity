@@ -1,5 +1,6 @@
 package modulardiversity.tile;
 
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import modulardiversity.components.MachineComponents;
 import modulardiversity.components.requirements.RequirementMysticalMechanics;
@@ -34,7 +35,7 @@ public class TileMysticalMechanicsInput extends TileEntityMysticalMechanics {
     @Nullable
     @Override
     public MachineComponent provideComponent() {
-        return new MachineComponents.MysticalMechanicsHatch(MachineComponent.IOType.INPUT) {
+        return new MachineComponents.MysticalMechanicsHatch(IOType.INPUT) {
             @Override
             public ICraftingResourceHolder<RequirementMysticalMechanics.ResourceToken> getContainerProvider() {
                 return TileMysticalMechanicsInput.this;

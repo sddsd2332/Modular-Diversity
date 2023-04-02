@@ -2,7 +2,6 @@ package modulardiversity.jei.renderer;
 
 import com.google.common.collect.Lists;
 import mezz.jei.api.gui.IDrawableStatic;
-import mezz.jei.api.gui.ITickTimer;
 import mezz.jei.api.ingredients.IIngredientRenderer;
 import modulardiversity.components.requirements.RequirementLaser;
 import modulardiversity.jei.JEIHelpers;

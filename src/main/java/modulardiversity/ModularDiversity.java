@@ -11,23 +11,18 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = ModularDiversity.MODID, acceptedMinecraftVersions = "[1.12, 1.13)", dependencies = "required-after:modularmachinery;after:botania;after:embers;after:immersivepetroleum;after:buildcraftlib;after:pneumaticcraft;after:betterwithmods;")
+@Mod(modid = ModularDiversity.MODID, acceptedMinecraftVersions = "[1.12, 1.13)", dependencies = "required-after:modularmachinery;after:immersivepetroleum;after:buildcraftlib;after:betterwithmods;")
 @Mod.EventBusSubscriber
 public class ModularDiversity
 {
     public static final String MODID = "modulardiversity";
 
     public static boolean ImmersivePetroleumLoaded;
-    public static boolean EmbersLoaded;
-    public static boolean BotaniaLoaded;
     public static boolean BuildcraftLoaded;
     public static boolean BetterWithModsLoaded;
-    public static boolean PneumaticCraftLoaded;
-    public static boolean ProdigyTechLoaded;
     public static boolean MekanismLoaded;
     public static boolean MysticalMechanicsLoaded;
 
-    public static int MANA_CAPACITY = 10000000;
     public static float MEKANISM_LASER_CAPACITY = 5.0E9F;
 
     Configuration configuration;
@@ -36,22 +31,17 @@ public class ModularDiversity
     public static IProxy proxy;
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-        BotaniaLoaded = Loader.isModLoaded("botania");
-        EmbersLoaded = Loader.isModLoaded("embers");
+    public void preInit(FMLPreInitializationEvent event) {
+
         ImmersivePetroleumLoaded = Loader.isModLoaded("immersivepetroleum");
         BetterWithModsLoaded = Loader.isModLoaded("betterwithmods");
-        PneumaticCraftLoaded = Loader.isModLoaded("pneumaticcraft");
         BuildcraftLoaded = Loader.isModLoaded("buildcraftlib");
-        ProdigyTechLoaded = Loader.isModLoaded("prodigytech");
         MekanismLoaded = Loader.isModLoaded("mekanism");
         MysticalMechanicsLoaded = Loader.isModLoaded("mysticalmechanics");
 
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configuration.load();
 
-        MANA_CAPACITY = configuration.getInt("manaHatchSize","hatch", MANA_CAPACITY, 0, Integer.MAX_VALUE, "Determines size of the mana hatch.");
         MEKANISM_LASER_CAPACITY = configuration.getFloat("mekanismLaserHatchSize","hatch", MEKANISM_LASER_CAPACITY, 0, Float.MAX_VALUE, "Determines size of the mekanism laser hatch.");
 
         if (configuration.hasChanged())

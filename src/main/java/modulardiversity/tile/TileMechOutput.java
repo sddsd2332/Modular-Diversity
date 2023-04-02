@@ -1,6 +1,7 @@
 package modulardiversity.tile;
 
 import betterwithmods.api.BWMAPI;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import modulardiversity.components.MachineComponents;
 import modulardiversity.components.requirements.RequirementMechanical;
@@ -67,7 +68,7 @@ public class TileMechOutput extends TileEntityMech implements ITickable {
     @Nullable
     @Override
     public MachineComponent provideComponent() {
-        return new MachineComponents.MechanicalHatch(MachineComponent.IOType.OUTPUT) {
+        return new MachineComponents.MechanicalHatch(IOType.OUTPUT) {
             @Override
             public ICraftingResourceHolder<RequirementMechanical.ResourceToken> getContainerProvider() {
                 return TileMechOutput.this;

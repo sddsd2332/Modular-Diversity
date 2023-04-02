@@ -7,6 +7,7 @@ import flaxbeard.immersivepetroleum.common.IPSaveData;
 import hellfirepvp.modularmachinery.common.crafting.ComponentType;
 import hellfirepvp.modularmachinery.common.crafting.helper.ComponentRequirement;
 import hellfirepvp.modularmachinery.common.crafting.helper.RecipeCraftingContext;
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.modifier.RecipeModifier;
 import modulardiversity.jei.JEIComponentModifier;
@@ -25,7 +26,7 @@ public class RequirementModifier extends RequirementEnvironmental<Modifier, Requ
     public String name;
     public float min, max;
 
-    public RequirementModifier(MachineComponent.IOType actionType, String name, float min, float max) {
+    public RequirementModifier(IOType actionType, String name, float min, float max) {
         super(ComponentType.Registry.getComponent("modifier"), actionType);
         this.name = name;
         this.min = min;
@@ -85,7 +86,7 @@ public class RequirementModifier extends RequirementEnvironmental<Modifier, Requ
         }
 
         @Override
-        public void applyModifiers(RecipeCraftingContext modifiers, MachineComponent.IOType ioType, float durationMultiplier) {
+        public void applyModifiers(RecipeCraftingContext modifiers, IOType ioType, float durationMultiplier) {
             float v = Misc.applyModifiers(modifiers, name, ioType, 1.0f, false);
             if(v >= min && v <= max)
                 matched = true;

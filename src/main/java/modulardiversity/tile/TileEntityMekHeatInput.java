@@ -1,5 +1,6 @@
 package modulardiversity.tile;
 
+import hellfirepvp.modularmachinery.common.machine.IOType;
 import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import modulardiversity.components.MachineComponents;
 import modulardiversity.components.requirements.RequirementMekHeat;
@@ -12,7 +13,7 @@ public class TileEntityMekHeatInput extends TileEntityMekHeat {
     @Nullable
     @Override
     public MachineComponent provideComponent() {
-        return new MachineComponents.MekHeatHatch(MachineComponent.IOType.INPUT) {
+        return new MachineComponents.MekHeatHatch(IOType.INPUT) {
             @Override
             public ICraftingResourceHolder<RequirementMekHeat.ResourceToken> getContainerProvider() {
                 return TileEntityMekHeatInput.this;

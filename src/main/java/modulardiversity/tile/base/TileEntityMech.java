@@ -1,15 +1,9 @@
 package modulardiversity.tile.base;
 
-import betterwithmods.api.BWMAPI;
 import betterwithmods.api.capabilities.CapabilityMechanicalPower;
 import betterwithmods.api.tile.IMechanicalPower;
-import betterwithmods.util.MechanicalUtil;
-import hellfirepvp.modularmachinery.common.machine.MachineComponent;
 import hellfirepvp.modularmachinery.common.tiles.base.MachineComponentTile;
 import hellfirepvp.modularmachinery.common.tiles.base.TileColorableMachineComponent;
-import hellfirepvp.modularmachinery.common.util.IEnergyHandler;
-import modulardiversity.components.MachineComponents;
-import modulardiversity.components.requirements.RequirementMana;
 import modulardiversity.components.requirements.RequirementMechanical;
 import modulardiversity.util.ICraftingResourceHolder;
 import net.minecraft.block.Block;
@@ -20,8 +14,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Optional;
 
 import javax.annotation.Nullable;
-
-import static modulardiversity.components.MachineComponents.*;
 
 @Optional.Interface(iface = "betterwithmods.api.tile.IMechanicalPower",modid = "betterwithmods")
 public abstract class TileEntityMech extends TileColorableMachineComponent implements MachineComponentTile, IMechanicalPower, ICraftingResourceHolder<RequirementMechanical.ResourceToken> {
